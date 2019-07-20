@@ -1,9 +1,12 @@
 package jp.org.web.controller;
 
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.org.web.form.LoginForm;
+import jp.org.web.sql.LoginMapper;
 
 /**
  * Handles requests for the application home page.
@@ -19,6 +23,9 @@ import jp.org.web.form.LoginForm;
 public class LoginController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+	
+	@Autowired
+	private LoginMapper loginMapper;
 	
 	@ModelAttribute
 	public LoginForm setLoginForm() {
@@ -52,6 +59,12 @@ public class LoginController {
 		}
 
 		logger.info("Login - doLogin stop");
+		
+		// DB Access
+		List<Map<String, String>> loginRecs = loginMapper.getUserMap();
+		for (Map<String, String> map : loginRecs) {
+			System.out.println("rec -> " + map.get("loginId"));
+		}
 
 		return ret;
 	}
