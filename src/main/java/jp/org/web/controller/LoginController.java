@@ -1,9 +1,6 @@
 package jp.org.web.controller;
 
-import java.util.List;
 import java.util.Locale;
-import java.util.Map;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,8 +46,12 @@ public class LoginController {
 		logger.info("password -> " + loginForm.getPassword());
 		
 		String ret = "login";
-		if(loginForm.getLoginId().equals("abc") && loginForm.getPassword().equals("eee")) {
-			logger.info("Login OK, Next Page is home");
+
+		// check table samurai_login
+		String loginResult = loginMapper.getUserMap(loginForm.getLoginId(), loginForm.getPassword());
+
+		// login and password is blank when login fail
+		if(loginResult != null) {
 			ret = "home";
 		} else {
 			logger.info("Login NG, Back loin page");
@@ -60,12 +61,6 @@ public class LoginController {
 
 		logger.info("Login - doLogin stop");
 		
-		// DB Access
-		List<Map<String, String>> loginRecs = loginMapper.getUserMap();
-		for (Map<String, String> map : loginRecs) {
-			System.out.println("rec -> " + map.get("loginId"));
-		}
-
 		return ret;
 	}
 
