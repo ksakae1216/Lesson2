@@ -1,5 +1,6 @@
 package jp.org.web.controller;
 
+import java.util.List;
 import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jp.org.web.dao.LoginDao;
+import jp.org.web.entity.LoginEntity;
 import jp.org.web.form.LoginForm;
 import jp.org.web.sql.LoginMapper;
 
@@ -21,8 +24,11 @@ public class LoginController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
+//	@Autowired
+//	private LoginMapper loginMapper;
+	
 	@Autowired
-	private LoginMapper loginMapper;
+	private LoginDao loginDao;
 	
 	@ModelAttribute
 	public LoginForm setLoginForm() {
@@ -48,7 +54,8 @@ public class LoginController {
 		String ret = "login";
 
 		// check table samurai_login
-		String loginResult = loginMapper.getUserMap(loginForm.getLoginId(), loginForm.getPassword());
+//		String loginResult = loginMapper.getUserMap(loginForm.getLoginId(), loginForm.getPassword());
+		String loginResult = "abc";
 
 		// login and password is blank when login fail
 		if(loginResult != null) {
@@ -60,6 +67,10 @@ public class LoginController {
 		}
 
 		logger.info("Login - doLogin stop");
+		
+//		loginDao.getLoginData();
+		List<LoginEntity> list = loginDao.findAll();
+		System.out.println(list.toString());
 		
 		return ret;
 	}
