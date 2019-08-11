@@ -1,5 +1,7 @@
 package jp.org.web.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -27,16 +29,30 @@ public class ListController {
 	private LoginRepository loginRepository;
 	
 	@ModelAttribute
-	public LoginForm setLoginForm() {
-		LoginForm loginForm = new LoginForm();
-		return loginForm;
+	public List<LoginForm> setLoginForms() {
+		List<LoginForm> loginForms = new ArrayList<>();
+		return loginForms;
 	}
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/01_list/list", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Login screen display");
+	public String home(Model model) {
+		logger.info("List screen display");
+		
+		List<LoginForm> loginList = new ArrayList<>();
+		LoginForm loginForm = new LoginForm();
+		LoginForm loginForm2 = new LoginForm();
+		loginForm.setLoginId("sakae");
+		loginForm.setPassword("pass");
+		loginForm2.setLoginId("hogehoge");
+		loginForm2.setPassword("fumufumu");
+
+		loginList.add(loginForm);
+		loginList.add(loginForm2);
+		
+		model.addAttribute("loginForms", loginList);
 		
 		return "01_list/list";
 	}
