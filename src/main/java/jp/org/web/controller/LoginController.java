@@ -49,7 +49,7 @@ public class LoginController {
 		
 		String ret = "login";
 		
-		// DBから取得
+		// DBに接続
 		String loginResult = loginRepository.getUserMap(loginForm.getLoginId(), loginForm.getPassword());
 		
 		if(loginResult != null) {
@@ -57,7 +57,7 @@ public class LoginController {
 			ret = "home";
 		} else {
 			logger.info("Login NG, Back loin page");
-			loginForm.setLoginId("");
+			loginForm.setLoginId("失敗");
 			loginForm.setPassword("");
 		}
 
