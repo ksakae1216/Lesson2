@@ -38,8 +38,6 @@ public class LoginController {
 	public String home(Locale locale, Model model, LoginForm loginForm) {
 		logger.info("Login screen display");
 		
-		loginForm.setLoginId("abc");
-		
 		return "login";
 	}
 
@@ -59,7 +57,7 @@ public class LoginController {
 			ret = "home";
 		} else {
 			logger.info("Login NG, Back loin page");
-			loginForm.setLoginId("失敗");
+			loginForm.setLoginId("");
 			loginForm.setPassword("");
 		}
 
