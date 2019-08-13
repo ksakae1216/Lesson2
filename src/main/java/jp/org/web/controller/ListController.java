@@ -25,15 +25,6 @@ public class ListController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ListController.class);
 	
-	@Autowired
-	private LoginRepository loginRepository;
-	
-	@ModelAttribute
-	public List<LoginForm> setLoginForms() {
-		List<LoginForm> loginForms = new ArrayList<>();
-		return loginForms;
-	}
-	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
