@@ -17,21 +17,25 @@
 </head>
 
 <body>
-	<form:form modelAttribute="loginForms">
+	<form:form modelAttribute="lessonList">
 		<table class="table">
 		  <thead>
 		    <tr>
-		      <th scope="col">First</th>
-		      <th scope="col">Last</th>
-		      <th scope="col">Handle</th>
+		      <th scope="col">ユーザーID</th>
+		      <th scope="col">名前</th>
+		      <th scope="col">苗字</th>
+		      <th scope="col">1stレッスン</th>
+		      <th scope="col">2ndレッスン</th>
 		    </tr>
 		  </thead>
 		  <tbody>
-			<c:forEach items="${loginForms}" var="loginRow" varStatus="status">
+			<c:forEach items="${lessonList}" var="lessonRow" varStatus="status">
 		    <tr>
-				<td>${loginRow.loginId}</td>
-				<td>${loginRow.password}</td>
-				<td>@mdo</td>
+				<td>${lessonRow.userId}</td>
+				<td>${lessonRow.userFirstName}</td>
+				<td>${lessonRow.userLastName}</td>
+				<td>${lessonRow.lesson1st}</td>
+				<td>${lessonRow.lesson2nd}</td>
 		    </tr>
 			</c:forEach>
 		  </tbody>

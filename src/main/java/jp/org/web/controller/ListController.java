@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jp.org.web.form.LessonListForm;
 import jp.org.web.form.LoginForm;
+import jp.org.web.repository.LessonnListRepository;
 import jp.org.web.repository.LoginRepository;
 
 
@@ -25,6 +27,8 @@ public class ListController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ListController.class);
 	
+	@Autowired
+	private LessonnListRepository repository;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -32,18 +36,8 @@ public class ListController {
 	public String home(Model model) {
 		logger.info("List screen display");
 		
-		List<LoginForm> loginList = new ArrayList<>();
-		LoginForm loginForm = new LoginForm();
-		LoginForm loginForm2 = new LoginForm();
-		loginForm.setLoginId("sakae");
-		loginForm.setPassword("pass");
-		loginForm2.setLoginId("hogehoge");
-		loginForm2.setPassword("fumufumu");
-
-		loginList.add(loginForm);
-		loginList.add(loginForm2);
-		
-		model.addAttribute("loginForms", loginList);
+		List<LessonListForm> lessonListForm = repository.getLessonListMap();
+		model.addAttribute("lessonList", lessonListForm);
 		
 		return "01_list/list";
 	}
