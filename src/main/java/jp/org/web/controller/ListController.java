@@ -1,22 +1,17 @@
 package jp.org.web.controller;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.org.web.form.LessonListForm;
-import jp.org.web.form.LoginForm;
 import jp.org.web.repository.LessonnListRepository;
-import jp.org.web.repository.LoginRepository;
 
 
 /**
@@ -39,7 +34,7 @@ public class ListController {
 		List<LessonListForm> lessonListForm = repository.getLessonListMap();
 		model.addAttribute("lessonList", lessonListForm);
 		
-		return "01_list/list";
+		return "/01_list/list";
 	}
 
 }
