@@ -35,7 +35,7 @@ public class LoginController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String home(Locale locale, Model model, LoginForm loginForm) {
 		logger.info("Login screen display");
 		
 		return "login";
@@ -49,7 +49,7 @@ public class LoginController {
 		
 		String ret = "login";
 		
-		// DBから取得
+		// DBに接続
 		String loginResult = loginRepository.getUserMap(loginForm.getLoginId(), loginForm.getPassword());
 		
 		if(loginResult != null) {
