@@ -12,6 +12,9 @@
 </head>
 
 <body>
-  
-更新画面
+	更新画面
+	<form:form modelAttribute="lessonListForm">
+		${lessonListForm.userFirstName}
+	</form:form>
+	
 </html>
