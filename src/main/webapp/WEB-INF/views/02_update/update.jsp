@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"  %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html lang="en" >
@@ -15,6 +15,9 @@
 	更新画面
 	<form:form modelAttribute="lessonListForm">
 		${lessonListForm.userFirstName}
+		<form:input path="userFirstName"/>
+		
+		<form:button>更新</form:button>
 	</form:form>
 	
 </html>
