@@ -53,8 +53,8 @@ public class LoginController {
 		String loginResult = loginRepository.getUserMap(loginForm.getLoginId(), loginForm.getPassword());
 		
 		if(loginResult != null) {
-			logger.info("Login OK, Next Page is home");
-			ret = "home";
+			logger.info("Login OK, Next Page is list");
+			ret = "redirect:/01_list/list";
 		} else {
 			logger.info("Login NG, Back loin page");
 			loginForm.setLoginId("");
