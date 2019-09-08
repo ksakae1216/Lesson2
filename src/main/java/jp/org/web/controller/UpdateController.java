@@ -62,9 +62,6 @@ public class UpdateController {
 		
 		logger.info("val -> " + lessonListForm.getUserFirstName());
 		
-//		LessonListForm lessonListForm = lessonListRepository.getLessonListOne(id);
-//		model.addAttribute("lessonListForm", lessonListForm);
-		
 		return "/02_update/update";
 	}
 
