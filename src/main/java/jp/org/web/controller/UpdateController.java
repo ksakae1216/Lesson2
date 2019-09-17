@@ -45,7 +45,6 @@ public class UpdateController {
 	public String displayData(@PathVariable String id, Model model) {
 		logger.info("Update screen display id:" + id);
 		
-		
 		LessonListForm lessonListForm = lessonListRepository.getLessonListOne(id);
 		model.addAttribute("lessonListForm", lessonListForm);
 		
@@ -58,9 +57,9 @@ public class UpdateController {
 	 */
 	@RequestMapping(value = "/02_update/update/{id}", method = RequestMethod.POST)
 	public String updateData(@PathVariable String id, Model model, LessonListForm lessonListForm) throws UnsupportedEncodingException {
-		logger.info("Update screen display id:" + id);
+		logger.info("update data");
 		
-		logger.info("val -> " + lessonListForm.getUserFirstName());
+		lessonListRepository.update(lessonListForm.getUserFirstName(), lessonListForm.getUserLastName(), lessonListForm.getLesson1st(), lessonListForm.getLesson2nd(), id);
 		
 		return "/02_update/update";
 	}
