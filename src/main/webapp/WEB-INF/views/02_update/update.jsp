@@ -17,7 +17,7 @@
 		<!-- Default form contact -->
 <form:form class="text-center border border-light p-5" modelAttribute="lessonListForm">
 
-    <p class="h4 mb-4">Update user: ${lessonListForm.userId}</p>
+    <p class="h4 mb-4 bg-info text-white rounded">Update user: ${lessonListForm.userId}</p>
 
     <!-- userFirstName -->
     <label>User FirstName</label>
