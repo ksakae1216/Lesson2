@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.org.web.form.LessonListForm;
-import jp.org.web.repository.LessonnListRepository;
+import jp.org.web.repository.LessonListRepository;
 
 
 /**
@@ -23,7 +23,7 @@ public class ListController {
 	private static final Logger logger = LoggerFactory.getLogger(ListController.class);
 	
 	@Autowired
-	private LessonnListRepository repository;
+	private LessonListRepository repository;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
