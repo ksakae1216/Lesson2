@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jp.org.web.form.LanguageForm;
 import jp.org.web.form.LessonListForm;
@@ -33,17 +34,6 @@ public class UpdateController {
 	@Autowired
 	private LanguageRepository languageRepository;
 	
-	@ModelAttribute
-	public LessonListForm setLessonListForm() {
-		LessonListForm lessonListForm = new LessonListForm();
-		return lessonListForm;
-	}
-	
-	@ModelAttribute
-	public LessonListForm getLessonListForm(LessonListForm lessonListForm) {
-		return lessonListForm;
-	}
-
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -66,17 +56,18 @@ public class UpdateController {
 	 * @throws UnsupportedEncodingException 
 	 */
 	@RequestMapping(value = "/02_update/update/{id}", method = RequestMethod.POST)
-	public String updateData(@PathVariable String id, Model model, LessonListForm lessonListForm) {
+	public String updateData(@PathVariable String id, Model model, LessonListForm lessonListForm, RedirectAttributes attr) {
 		logger.info("update data");
 		
+		String funcType = "update";
 		if(lessonListForm.isDeleteFlg()) {
 			lessonListRepository.delete(id);
+			funcType = "delete";
 		} else {
 			lessonListRepository.update(lessonListForm.getUserFirstName(), lessonListForm.getUserLastName(), lessonListForm.getLesson1st(), lessonListForm.getLesson2nd(), id);
 		}
 
-		List<LanguageForm> languageForm = languageRepository.getlanguage();
-		model.addAttribute("languageForm", languageForm);
+		attr.addAttribute("functype", funcType);
 
 		return "redirect:/01_list/list";
 	}
