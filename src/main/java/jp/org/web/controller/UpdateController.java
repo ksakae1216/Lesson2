@@ -60,7 +60,22 @@ public class UpdateController {
 		
 		return "/02_update/update";
 	}
-	
+
+	@RequestMapping(value = "/02_update/update/addRow", method = RequestMethod.GET)
+	public String initNewRow(Locale locale, Model model) {
+		logger.info("Update screen display new row");
+
+		String newUserId = String.format("%03d", this.getAddRowNo());
+		LessonListForm lessonDataForm = new LessonListForm();
+		lessonDataForm.setUserId(newUserId);
+		model.addAttribute("lessonListForm", lessonDataForm);
+		
+		List<LanguageForm> languageForm = languageRepository.getlanguage();
+		model.addAttribute("languageForm", languageForm);
+		
+		return "/02_update/update";
+	}
+
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 * @throws UnsupportedEncodingException 
@@ -81,5 +96,18 @@ public class UpdateController {
 		return "redirect:/01_list/list";
 	}
 
+	private int getAddRowNo() {
+		List<LessonListForm> list = lessonListRepository.getLessonListMap();
+		int newRowId = 1;
+		for(LessonListForm lessonForm: list) {
+			int userIdInt = Integer.parseInt(lessonForm.getUserId());
+			if(userIdInt != newRowId) {
+				return newRowId;
+			}
+			newRowId++;
+		}
+		
+		return newRowId;
+	}
 
 }

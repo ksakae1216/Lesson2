@@ -10,9 +10,6 @@
   
   <title>list</title>
   
-	<!-- Bootstrap CSS -->
-	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
-
 	<link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/> 
 	<script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.js"></script>	
 	<script type="text/javascript">
@@ -37,7 +34,10 @@
 
 	<div class="container-fluid">
 		<div class="row" style="padding-bottom: 10px;">
-			<div class="col" style="display: flex; justify-content: flex-end;">
+			<div class="col-md-11" style="padding: 0px;">
+				<input type="submit" name="addRow" class="btn btn-success" value="新規登録"/>
+			</div>
+			<div class="col-md-1" style="padding: 0px;">
 				<input type="submit" name="logout" class="btn btn-primary" value="ログアウト"/>
 			</div>
 		</div>
