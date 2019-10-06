@@ -30,6 +30,7 @@ public class ListController {
 	@RequestMapping(value = "/01_list/list", method = RequestMethod.GET)
 	public String home(Model model) {
 		logger.info("List screen display");
+		logger.debug("######## debug");
 		
 		List<LessonListForm> lessonListForm = repository.getLessonListMap();
 		model.addAttribute("lessonList", lessonListForm);

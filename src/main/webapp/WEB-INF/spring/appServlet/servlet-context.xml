@@ -26,13 +26,32 @@
 	
 	<context:component-scan base-package="jp.org.web" />
 
-	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+<!-- 	<beans:bean id="dataSourceSpied" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<beans:property name="url" value="jdbc:mysql://127.0.0.1:3306/test_mysql" />
 		<beans:property name="username" value="root" />
 		<beans:property name="password" value="password" />
 	</beans:bean>
-	
+ -->	
+<!-- 	<beans:bean id="dataSource" class="net.sf.log4jdbc.sql.jdbcapi.DataSourceSpy">
+		<beans:constructor-arg ref="dataSourceSpied"/>
+	</beans:bean>
+ -->
+
+<!--  	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<beans:property name="url" value="jdbc:mysql://127.0.0.1:3306/test_mysql" />
+		<beans:property name="username" value="root" />
+		<beans:property name="password" value="password" />
+	</beans:bean>
+ -->
+  	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
+		<beans:property name="url" value="jdbc:log4jdbc:mysql://127.0.0.1:3306/test_mysql" />
+		<beans:property name="username" value="root" />
+		<beans:property name="password" value="password" />
+	</beans:bean>
+ 	
 	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource" />
 	</beans:bean>
