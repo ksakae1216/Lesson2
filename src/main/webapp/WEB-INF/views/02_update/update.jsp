@@ -10,6 +10,12 @@
   <title>更新画面</title>
   
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript">
+ 		$(document).ready(function ($) {
+ 			$('[name=submitButton]:input').text('bbb');
+ 		});
+  </script>
 
 </head>
 
@@ -42,7 +48,7 @@
     <form:checkbox path="deleteFlg"/>
     <form:label path="">このIDを削除</form:label>
 
-    <form:button  class="btn btn-info btn-block">更新</form:button>
+    <form:button name="submitButton" class="btn btn-info btn-block">更新</form:button>
 
 	<form:hidden path="userId"/>
 </form:form>
