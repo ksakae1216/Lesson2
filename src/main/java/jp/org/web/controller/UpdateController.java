@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jp.org.web.form.LanguageForm;
 import jp.org.web.form.LessonListForm;
@@ -68,6 +69,7 @@ public class UpdateController {
 		String newUserId = String.format("%03d", this.getAddRowNo());
 		LessonListForm lessonDataForm = new LessonListForm();
 		lessonDataForm.setUserId(newUserId);
+		lessonDataForm.setInsertFlg(true);
 		model.addAttribute("lessonListForm", lessonDataForm);
 		
 		List<LanguageForm> languageForm = languageRepository.getlanguage();
@@ -80,19 +82,24 @@ public class UpdateController {
 	 * Simply selects the home view to render by returning its name.
 	 * @throws UnsupportedEncodingException 
 	 */
-	@RequestMapping(value = "/02_update/update/{id}", method = RequestMethod.POST)
-	public String updateData(@PathVariable String id, Model model, LessonListForm lessonListForm) {
+	@RequestMapping(value = "/02_update/update/{path}", method = RequestMethod.POST)
+	public String updateData(@PathVariable String path, Model model, LessonListForm lessonListForm, RedirectAttributes attr) {
 		logger.info("update data");
 		
+		String funcType = "update";
+		
 		if(lessonListForm.isDeleteFlg()) {
-			lessonListRepository.delete(id);
+			lessonListRepository.delete(lessonListForm.getUserId());
+			funcType = "delete";
+		} else if(lessonListForm.isInsertFlg()) {
+			lessonListRepository.insert(lessonListForm.getUserId(), lessonListForm.getUserFirstName(), lessonListForm.getUserLastName(), lessonListForm.getLesson1st(), lessonListForm.getLesson2nd());
+			funcType = "insert";
 		} else {
-			lessonListRepository.update(lessonListForm.getUserFirstName(), lessonListForm.getUserLastName(), lessonListForm.getLesson1st(), lessonListForm.getLesson2nd(), id);
+			lessonListRepository.update(lessonListForm.getUserFirstName(), lessonListForm.getUserLastName(), lessonListForm.getLesson1st(), lessonListForm.getLesson2nd(), lessonListForm.getUserId());
 		}
 
-		List<LanguageForm> languageForm = languageRepository.getlanguage();
-		model.addAttribute("languageForm", languageForm);
-
+		attr.addAttribute("funcType", funcType);
+		
 		return "redirect:/01_list/list";
 	}
 

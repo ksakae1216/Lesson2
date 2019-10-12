@@ -13,17 +13,19 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript">
  		$(document).ready(function ($) {
- 			$('[name=submitButton]:input').text('bbb');
+ 			console.log('insertflg -> ' + $('input:hidden[name="insertFlg"]').val());
+ 			if($('input:hidden[name="insertFlg"]').val() == 'true') {
+ 				$('[name=submitButton]:input').text('新規登録');
+ 			}
  		});
   </script>
-
 </head>
 
 <body>
 		<!-- Default form contact -->
 <form:form class="text-center border border-light p-5" modelAttribute="lessonListForm">
 
-    <p class="h4 mb-4 bg-info text-white rounded">Update user: ${lessonListForm.userId}</p>
+    <p class="h4 mb-4 bg-info text-white rounded">userId: ${lessonListForm.userId}</p>
 
     <!-- userFirstName -->
     <label>User FirstName</label>
@@ -51,6 +53,7 @@
     <form:button name="submitButton" class="btn btn-info btn-block">更新</form:button>
 
 	<form:hidden path="userId"/>
+	<form:hidden path="insertFlg"/>
 </form:form>
 <!-- Default form contact -->
 
