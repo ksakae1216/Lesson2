@@ -36,13 +36,6 @@
 					message = '削除';
 				} else if(typeSplit[1] == 'insert') {
 					message = '登録';
-				}
-				toastr.options = {
-						"positionClass": "toast-top-center",
-						"timeOut": "2000"
-				}
-				toastr.info(message + 'が完了しました');
-			}
 		});
  	</script>
 </head>
