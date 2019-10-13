@@ -10,25 +10,22 @@
   <title>更新画面</title>
   
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-	<script	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
- 	<script>
-		$(function() {
- 			$("input[name='userFirstName']").focus(function (){
- 				console.log('フォーカスされました。');
- 				$("input[name='userFirstName']").addClass('bg-primary text-white');
- 			});
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript">
+ 		$(document).ready(function ($) {
+ 			console.log('insertflg -> ' + $('input:hidden[name="insertFlg"]').val());
+ 			if($('input:hidden[name="insertFlg"]').val() == 'true') {
+ 				$('[name=submitButton]:input').text('新規登録');
+ 			}
  		});
-
- 	</script>
-
+  </script>
 </head>
 
 <body>
 		<!-- Default form contact -->
 <form:form class="text-center border border-light p-5" modelAttribute="lessonListForm">
 
-    <p class="h4 mb-4 bg-info text-white rounded">Update user: ${lessonListForm.userId}</p>
+    <p class="h4 mb-4 bg-info text-white rounded">userId: ${lessonListForm.userId}</p>
 
     <!-- userFirstName -->
     <label>User FirstName</label>
@@ -53,9 +50,10 @@
     <form:checkbox path="deleteFlg"/>
     <form:label path="">このIDを削除</form:label>
 
-    <form:button  class="btn btn-info btn-block">更新</form:button>
+    <form:button name="submitButton" class="btn btn-info btn-block">更新</form:button>
 
 	<form:hidden path="userId"/>
+	<form:hidden path="insertFlg"/>
 </form:form>
 <!-- Default form contact -->
 
