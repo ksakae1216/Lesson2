@@ -49,7 +49,7 @@ public class LoginController {
 		
 		String ret = "login";
 		
-		// DBに接続
+		// DBアクセス
 		String loginResult = loginRepository.getUserMap(loginForm.getLoginId(), loginForm.getPassword());
 		
 		if(loginResult != null) {
