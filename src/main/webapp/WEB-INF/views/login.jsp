@@ -20,7 +20,9 @@
 	<script type="text/javascript">
 	 		$(document).ready(function ($) {
 	 			let msg = $('input:hidden[name="errorMessage"]').val();
-	 			$('input:hidden[name="errorMessage"]').after('<span class="errorMsg">' + msg + '</span>');
+	 			if(msg.length != 0) {
+		 			$('input:hidden[name="errorMessage"]').after('<span class="errorMsg">' + msg + '</span>');
+	 			}
 			});
  	</script>	
 </head>
