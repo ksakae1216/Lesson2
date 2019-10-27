@@ -67,7 +67,6 @@ public class LoginControllerTest {
 		assertThat(loginController.doLogin(loginForm, result), is("login"));
 		assertThat(loginForm.getLoginId(), is(""));
 		assertThat(loginForm.getPassword(), is("testPassword"));
-		assertThat(loginForm.getErrorMessage(), is(LoginMessage.loginIdBlank));
 	}
 
 	@Test
@@ -78,7 +77,6 @@ public class LoginControllerTest {
 		assertThat(loginController.doLogin(loginForm, result), is("login"));
 		assertThat(loginForm.getLoginId(), is("testId"));
 		assertThat(loginForm.getPassword(), is(""));
-		assertThat(loginForm.getErrorMessage(), is(LoginMessage.passwordBlank));
 	}
 
 
