@@ -18,6 +18,43 @@
  				$('[name=submitButton]:input').text('新規登録');
  			}
  		});
+ 		
+ 		$(function() {
+ 		    $("select").change(function() {
+ 		    	getAsyncInformation(this);
+ 		    });
+ 		});
+
+ 		function getAsyncInformation(selectObj) {
+		    	let obj = $(selectObj).next("input");
+ 		    	console.log($(selectObj).val());
+ 		    	console.log(obj.val());
+
+        $.ajax({
+	            type        : "GET",
+	            url         : "/web/02_update/update/getInformation",
+	            dataType    : "json",
+	            success     : function(data) {
+	                            success(data);
+	                        },
+	            error       : function(XMLHttpRequest, textStatus, errorThrown) {
+	                            error(XMLHttpRequest, textStatus, errorThrown);
+	                        }
+	        });
+ 
+ 		}
+ 		
+ 		// Ajax通信成功時処理
+ 		function success(data) {
+ 		    console.log("success:");
+ 		}
+ 		 
+ 		// Ajax通信失敗時処理
+ 		function error(XMLHttpRequest, textStatus, errorThrown) {
+ 			console.log("error:" + XMLHttpRequest);
+ 			console.log("status:" + textStatus);
+ 			console.log("errorThrown:" + errorThrown);
+ 		}
   </script>
 </head>
 
@@ -40,12 +77,14 @@
      <form:select path="lesson1st" cssClass="browser-default custom-select mb-4">
     	<form:options items="${languageForm}" itemValue="language" itemLabel="language"/>
     </form:select>
+	<form:input path="information1st" class="form-control mb-4"/>
     
     <!-- lesson2nd -->
     <label>lesson2nd</label>
      <form:select path="lesson2nd" cssClass="browser-default custom-select mb-4">
     	<form:options items="${languageForm}" itemValue="language" itemLabel="language"/>
     </form:select>
+    <form:input path="information2nd" class="form-control mb-4"/>
 
     <form:checkbox path="deleteFlg"/>
     <form:label path="">このIDを削除</form:label>

@@ -2,6 +2,7 @@ package jp.org.web.controller;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jp.org.web.form.LanguageForm;
@@ -42,9 +44,15 @@ public class UpdateController {
 		logger.info("userId -> " + id);
 
 		LessonListForm lessonDataForm = lessonListRepository.getLessonListOne(id);
-		model.addAttribute("lessonListForm", lessonDataForm);
-		
 		List<LanguageForm> languageForm = languageRepository.getlanguage();
+
+		Optional<String> information1 = this.getLanguageInformation(lessonDataForm.getLesson1st(), languageForm);
+		Optional<String> information2 = this.getLanguageInformation(lessonDataForm.getLesson2nd(), languageForm);
+		
+		lessonDataForm.setInformation1st(information1.get());
+		lessonDataForm.setInformation2nd(information2.get());
+
+		model.addAttribute("lessonListForm", lessonDataForm);
 		model.addAttribute("languageForm", languageForm);
 		
 		return "/02_update/update";
@@ -64,6 +72,15 @@ public class UpdateController {
 		model.addAttribute("languageForm", languageForm);
 		
 		return "/02_update/update";
+	}
+
+	@RequestMapping(value = "/02_update/update/getInformation", method = RequestMethod.GET)
+	@ResponseBody
+	public String getInformation(Locale locale, Model model) {
+		logger.info("Start getInformation");
+
+		logger.info("End getInformation");		
+		return "Success getInformation";
 	}
 
 	/**
@@ -103,6 +120,12 @@ public class UpdateController {
 		}
 		
 		return newRowId;
+	}
+	
+	private Optional<String> getLanguageInformation(String language, List<LanguageForm> languageForm) {
+		Optional<String> information = languageForm.stream().filter(x -> x.getLanguage().equals(language)).map(x -> x.getInformation()).findFirst();
+		
+		return information;
 	}
 
 }
