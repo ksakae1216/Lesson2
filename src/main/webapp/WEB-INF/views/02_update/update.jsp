@@ -26,16 +26,17 @@
  		});
 
  		function getAsyncInformation(selectObj) {
-		    	let obj = $(selectObj).next("input");
- 		    	console.log($(selectObj).val());
- 		    	console.log(obj.val());
+	    	let obj = $(selectObj).next("input");
+		    console.log($(selectObj).val());
+		    console.log(obj.val());
 
-        $.ajax({
+	        $.ajax({
 	            type        : "GET",
 	            url         : "/web/02_update/update/getInformation",
+	            data        : {language: $(selectObj).val()},
 	            dataType    : "json",
 	            success     : function(data) {
-	                            success(data);
+	                            success(data, obj);
 	                        },
 	            error       : function(XMLHttpRequest, textStatus, errorThrown) {
 	                            error(XMLHttpRequest, textStatus, errorThrown);
@@ -45,8 +46,10 @@
  		}
  		
  		// Ajax通信成功時処理
- 		function success(data) {
- 		    console.log("success:");
+ 		function success(data, obj) {
+ 		    //console.table(data);
+ 		    console.log(data.information);
+ 		    obj.val(data.information);
  		}
  		 
  		// Ajax通信失敗時処理
