@@ -9,6 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
@@ -22,6 +24,8 @@ import jp.org.web.message.LoginMessage;
 
 public class LoginControllerTest {
 
+	private static final Logger logger = LoggerFactory.getLogger(LoginControllerTest.class);
+	
 	@InjectMocks
 	private LoginController loginController;
 	
@@ -61,33 +65,45 @@ public class LoginControllerTest {
 
 	@Test
 	public void testloginIdBlank() {
+		logger.info("Start testloginIdBlank");
+		
 		loginForm.setLoginId("");
 		when(result.hasErrors()).thenReturn(true);
 		
 		assertThat(loginController.doLogin(loginForm, result), is("login"));
 		assertThat(loginForm.getLoginId(), is(""));
 		assertThat(loginForm.getPassword(), is("testPassword"));
+		
+		logger.info("End testloginIdBlank");
 	}
 
 	@Test
 	public void testpasswordBlank() {
+		logger.info("Start testpasswordBlank");
+		
 		loginForm.setPassword("");
 		when(result.hasErrors()).thenReturn(true);
 		
 		assertThat(loginController.doLogin(loginForm, result), is("login"));
 		assertThat(loginForm.getLoginId(), is("testId"));
 		assertThat(loginForm.getPassword(), is(""));
+		
+		logger.info("End testpasswordBlank");
 	}
 
 
 	@Test
 	public void testFailLogin() {
+		logger.info("Start testFailLogin");
+		
 		when(loginRepository.getUserMap("testId", "failPassword")).thenReturn(null);
 		
 		assertThat(loginController.doLogin(loginForm, result), is("login"));
 		assertThat(loginForm.getLoginId(), is(""));
 		assertThat(loginForm.getPassword(), is(""));
 		assertThat(loginForm.getErrorMessage(), is(LoginMessage.idPassUnmach));
+		
+		logger.info("End testFailLogin");
 	}
 	
 
