@@ -9,7 +9,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Simple Form with Icons</title>
   <link rel="stylesheet" href="resources/style.css">
-  
+  <link href="resources/css/style.css" media="all" rel="stylesheet" type="text/css" />
+    
 	<script type="text/javascript"> 
 		function loginFocus() { 
 			var element = document.getElementById("login"); 
@@ -24,29 +25,39 @@
 		 			$('input:hidden[name="errorMessage"]').after('<span class="errorMsg">' + msg + '</span>');
 	 			}
 			});
- 	</script>	
+ 	</script>
+ 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 </head>
 
 <body onload='loginFocus()'>
-  
-  <fieldset>
-    <h1>Login</h1>
-    <form:form modelAttribute="loginForm">
-    	<div>
+    <nav id="gnav" class="fixed">
+      <ul class="main-back-ground-color">
+        <li><a href="#works"><span class="text-color">WORKS</span></a></li>
+        <li><a href="#feature"><span class="text-color">FEATURE</span></a></li>
+        <li><a href="#about"><span class="text-color">ABOUT</span></a></li>
+        <li><a href="#skill"><span class="text-color">SKILL</span></a></li>
+        <li><a href="#contact"><span class="text-color">CONTACT</span></a></li>
+      </ul>
+    </nav>
+	<fieldset style="margin-top:100px;">
+	  <h1>Login</h1>
+	  <form:form modelAttribute="loginForm">
+	  	<div>
 			<div class="iconUser"></div>
 			<form:input path="loginId" id="login" placeholder="Username"/>
 			<form:errors cssClass="errorMsg" path="loginId"/>
-    	</div>
-    	<div>
+	  	</div>
+	  	<div>
 			<div class="iconPassword"></div>
 			<form:input path="password" type="password" placeholder="Password"/>
 			<form:errors cssClass="errorMsg" path="password"/>
-    	</div>
-		<input type="submit" value="Enter">
-		
-		<form:hidden path="errorMessage"/>
-    </form:form>
-  </fieldset>  
+	  	</div>
+	<input type="submit" value="Enter">
+	
+	<form:hidden path="errorMessage"/>
+	  </form:form>
+	</fieldset>  
+	
 </body>
 
 </html>
