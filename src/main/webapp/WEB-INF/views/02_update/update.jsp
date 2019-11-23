@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>更新画面</title>
   
+  <link rel="stylesheet" href="/web/resources/style.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript">
@@ -65,7 +66,7 @@
 		<!-- Default form contact -->
 <form:form class="text-center border border-light p-5" modelAttribute="lessonListForm">
 
-    <p class="h4 mb-4 bg-info text-white rounded">userId: ${lessonListForm.userId}</p>
+    <p class="h4 mb-4 main-back-ground-color text-white rounded">userId: ${lessonListForm.userId}</p>
 
     <!-- userFirstName -->
     <label>User FirstName</label>
@@ -92,7 +93,7 @@
     <form:checkbox path="deleteFlg"/>
     <form:label path="">このIDを削除</form:label>
 
-    <form:button name="submitButton" class="btn btn-info btn-block">更新</form:button>
+    <form:button name="submitButton" class="btn accent-back-ground-color text-white btn-block">更新</form:button>
 
 	<form:hidden path="userId"/>
 	<form:hidden path="insertFlg"/>
