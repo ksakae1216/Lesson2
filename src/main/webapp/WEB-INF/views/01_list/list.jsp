@@ -41,7 +41,7 @@
 						"positionClass": "toast-top-center",
 						"timeOut": "2000"
 				}
-				toastr.info(message + 'が完了しました');
+				toastr.success(message + 'が完了しました');
 			}
 		});
  	</script>
