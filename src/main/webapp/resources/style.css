@@ -15,10 +15,10 @@ fieldset{
   margin-bottom:2%;
   transition:opacity 1s;
   -webkit-transition:opacity 1s;
-
+  border-width: 0px;
 }
 h1{
-  background:#004A3E;
+  background:#66BB6A;
   padding:20px 0; /*PADDING TODOS OS LADOS DE 20PX*/
   font-size:140%;
   font-weight:300;
@@ -42,7 +42,7 @@ input[type="password"]{
 .iconPassword{
   width:20px;
   height:20px;
-  background-color:#004A3E;
+  background-color:#66BB6A;
   float:left;
   padding:4% 4% 4% 4%;
   margin-bottom:4%;
@@ -54,7 +54,7 @@ input[type="password"]{
 .iconUser{
   width:20px;
   height:20px;
-  background-color:#004A3E;
+  background-color:#66BB6A;
   float:left;
   padding:4% 4% 4% 4%;
   margin-bottom:4%;
@@ -75,7 +75,7 @@ input[type="text"]{
 }
 input[type="submit"]{
   width:100%;
-  background:#004A3E;
+  background:#AB47BC;
   border:0;
   padding:4%;
   font-family:'Open Sans',sans-serif;
@@ -95,4 +95,16 @@ input[type="submit"]:hover{
 .errorMsg{
 	color: red;
 	font-weight: bold;
+}
+
+.main-back-ground-color{
+	background-color: #66BB6A;
+}
+
+.accent-back-ground-color{
+	background-color: #AB47BC;
+}
+
+.text-color{
+	color: white;
 }
