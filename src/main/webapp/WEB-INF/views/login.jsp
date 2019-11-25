@@ -41,7 +41,7 @@
     </nav>
 	<fieldset style="margin-top:100px;">
 	  <h1>Login</h1>
-	  <form:form modelAttribute="loginForm">
+	  <form:form modelAttribute="loginForm" cssClass="padding-add login-form">
 	  	<div>
 			<div class="iconUser"></div>
 			<form:input path="loginId" id="login" placeholder="Username"/>
@@ -52,7 +52,7 @@
 			<form:input path="password" type="password" placeholder="Password"/>
 			<form:errors cssClass="errorMsg" path="password"/>
 	  	</div>
-	<input type="submit" value="Enter">
+	<input type="submit" class="login-style" value="Enter">
 	
 	<form:hidden path="errorMessage"/>
 	  </form:form>
