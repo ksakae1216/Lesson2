@@ -137,6 +137,7 @@ li {
   align-items: center;
   justify-content: center;
   height: 86vh;
+  background-image: url("../img/head.jpg");
 }
 
 #header .logo {
