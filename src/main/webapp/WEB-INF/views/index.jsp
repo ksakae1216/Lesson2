@@ -23,18 +23,18 @@
 <body>
   <div id="wrapper">
     <nav id="gnav" class="fixed">
-      <ul>
-        <li><a href="#works">WORKS</a></li>
-        <li><a href="#feature">FEATURE</a></li>
-        <li><a href="#about">ABOUT</a></li>
-        <li><a href="#skill">SKILL</a></li>
-        <li><a href="#contact">CONTACT</a></li>
+      <ul class="main-back-ground-color">
+        <li><a href="#works"><span class="text-color">WORKS</span></a></li>
+        <li><a href="#feature"><span class="text-color">FEATURE</span></a></li>
+        <li><a href="#about"><span class="text-color">ABOUT</span></a></li>
+        <li><a href="#skill"><span class="text-color">SKILL</span></a></li>
+        <li><a href="#contact"><span class="text-color">CONTACT</span></a></li>
       </ul>
     </nav>
     <header id="header">
       <div class="inner">
         <h1 class="logo">
-          <div class="logo-title">TARO YAMADA</div>
+          <div class="logo-title">KOTARO SAKAE</div>
           <div class="logo-desc">PORTFOLIO</div>
         </h1>
       </div>
@@ -122,8 +122,7 @@
           </div>
           <div class="section-body">
             <div class="section-image">
-              <a href="https://webdesigner-go.com/" class="hover-action-01" target="_blank"><img
-                  src="resources/img/feature/feature.jpg" alt=""></a>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8498.62757263414!2d139.68745911800394!3d35.666776940724816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188cb2eb3108d1%3A0xf11cd9b2395b6677!2z5p2x5Lqs6YO95riL6LC35Yy6!5e0!3m2!1sja!2sjp!4v1575075705485!5m2!1sja!2sjp" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
             </div>
             <div class="section-desc">
               <div class="section-text">
@@ -265,6 +264,8 @@
                 <li><a href="https://twitter.com/" target="_blank"><img src="resources/img/contact/icon_tw.png" alt=""></a>
                 </li>
                 <li><a href="https://www.facebook.com/" target="_blank"><img src="resources/img/contact/icon_fb.png" alt=""></a>
+                </li>
+                <li><a href="http://localhost:8080/web/login" target="_blank"><img src="resources/img/contact/icon_bg.png" alt=""></a>
                 </li>
               </ul>
               <div class="contact-other">xxxxxx@gmail.com</div>
