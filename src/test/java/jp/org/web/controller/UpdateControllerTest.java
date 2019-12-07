@@ -19,7 +19,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.ui.Model;
 
 import jp.org.web.form.LessonListForm;
-import jp.org.web.form.LoginForm;
 import jp.org.web.repository.LanguageRepository;
 import jp.org.web.repository.LessonListRepository;
 import jp.org.web.util.PrepareLessonList;
