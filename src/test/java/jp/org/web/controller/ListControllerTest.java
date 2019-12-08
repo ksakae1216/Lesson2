@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -18,6 +17,7 @@ import org.springframework.ui.Model;
 
 import jp.org.web.form.LessonListForm;
 import jp.org.web.repository.LessonListRepository;
+import jp.org.web.util.PrepareLessonList;
 
 public class ListControllerTest {
 
@@ -39,30 +39,9 @@ public class ListControllerTest {
 		//おまじない
         initMocks(this);
         
-        this.setupLessonList();
+        lessonListFormList = PrepareLessonList.setupLessonList();
 	}
 	
-	private void setupLessonList() {
-        //lessonListテーブルの準備
-        LessonListForm listForm1 = new LessonListForm();
-        listForm1.setUserId("001");
-        listForm1.setUserFirstName("taro");
-        listForm1.setUserLastName("Yamada");
-        listForm1.setLesson1st("Java");
-        listForm1.setLesson2nd("Go");
-
-        LessonListForm listForm2 = new LessonListForm();
-        listForm2.setUserId("002");
-        listForm2.setUserFirstName("jiro");
-        listForm2.setUserLastName("Yamada");
-        listForm2.setLesson1st("PHP");
-        listForm2.setLesson2nd("Angular");
-
-        lessonListFormList = new ArrayList<>();
-        lessonListFormList.add(listForm1);
-        lessonListFormList.add(listForm2);
-	}
-
 	@Test
 	public void testHome() {
 		logger.info("Start testHome");
