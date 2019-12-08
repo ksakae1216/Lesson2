@@ -34,7 +34,7 @@
     <header id="header">
       <div class="inner">
         <h1 class="logo">
-          <div class="logo-title">TARO YAMADA</div>
+          <div class="logo-title">KOTARO SAKAE</div>
           <div class="logo-desc">PORTFOLIO</div>
         </h1>
       </div>
@@ -122,8 +122,7 @@
           </div>
           <div class="section-body">
             <div class="section-image">
-              <a href="https://webdesigner-go.com/" class="hover-action-01" target="_blank"><img
-                  src="resources/img/feature/feature.jpg" alt=""></a>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51862.583338298304!2d139.6574950914855!3d35.666869405552156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188cb2eb3108d1%3A0xf11cd9b2395b6677!2z5p2x5Lqs6YO95riL6LC35Yy6!5e0!3m2!1sja!2sjp!4v1575372783209!5m2!1sja!2sjp" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
             </div>
             <div class="section-desc">
               <div class="section-text">
